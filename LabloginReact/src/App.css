@@ -1,0 +1,73 @@
+.background-radial-gradient {
+    background-color: hsl(0, 0%, 97%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(220, 14%, 83%) 15%,
+        hsl(217, 14%, 78%) 35%,
+        hsl(219, 22%, 82%) 75%,
+        hsl(219, 21%, 61%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(216, 7%, 27%) 15%,
+        hsl(222, 5%, 49%) 35%,
+        hsl(218, 30%, 71%) 75%,
+        hsl(218, 4%, 42%) 80%,
+        transparent 100%);
+  }
+
+  #radius-shape-1 {
+    height: 220px;
+    width: 220px;
+    top: -60px;
+    left: -130px;
+    background: radial-gradient(#0b006b, #751fff);
+    overflow: hidden;
+  }
+
+  #radius-shape-2 {
+    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    bottom: -60px;
+    right: -110px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(#2e006b, #ad1fff);
+    overflow: hidden;
+  }
+
+  .bg-glass {
+    background-color: hsla(0, 0%, 100%, 0.9) !important;
+    backdrop-filter: saturate(200%) blur(25px);
+  }
+
+.nav-2 {
+    background: #0000004f;
+    background-size: 100%;
+    font-size:larger;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.801);
+    color: rgb(255, 255, 255);
+}
+
+.imageLogoText{
+    display:block;
+    margin:auto;
+    background-image: url("../src/assets/components/images/LogoOle.jpg");
+    height: 150px;
+    width: 150px;
+    border-radius: 10%;
+    background-size: 100% auto;
+}
+.imageLogoText :hover{
+    background-color: #16a085;
+}
+
+.imageLogo{
+    background-image: url("../src/assets/components/images/LogoOle2.png");
+    height: 150px;
+    width: 200px;
+    border-radius: 30%;
+    background-size: 100% auto;
+}
+
+
