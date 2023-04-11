@@ -62,13 +62,9 @@ function UserLogin(){
                                                 <br/>
                                             </div>
                                             <div className="form-outline mb-4">
-                                                <input type="email" id="email" className="form-control" name="email"  defaultValue={userLogin.email}
-                                                onChange={handleChangeEmail}/>
                                                 <label className="form-label">Email address</label>
                                             </div>
                                             <div className="form-outline mb-4">
-                                                <input type="password" id="password" className="form-control" name="password" defaultValue={userLogin.password} 
-                                                onChange={handleChangeEmail}/>
                                                 <label className="form-label" >Password</label>
                                             </div>
                                             <div className="text-center">
