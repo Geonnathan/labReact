@@ -19,7 +19,7 @@
     width: 220px;
     top: -60px;
     left: -130px;
-    background: radial-gradient(#0b006b, #751fff);
+    background: radial-gradient(#0b006ba2, #751fffe3);
     overflow: hidden;
   }
 
@@ -29,7 +29,7 @@
     right: -110px;
     width: 300px;
     height: 300px;
-    background: radial-gradient(#2e006b, #ad1fff);
+    background: radial-gradient(#2e006bc4, #ad1fffbe);
     overflow: hidden;
   }
 

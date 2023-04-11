@@ -1,5 +1,9 @@
-const URL_API_Login = "https://localhost:7028/user/";
-const URL_API_Register = "https://localhost:7211/DN";
+const URL_API = "https://localhost:7086/";
+const URL_APIUser =  URL_API+"users/DN/";
+const URL_APIUserWebs = URL_API+"userWeb/";
 
-export const GET_USER_LOGIN = URL_API_Login + "login";
-export const GET_USER_REGISTER = URL_API_Register;
+//Users
+export const GET_USER_LOGIN = URL_APIUser + "getUser";
+export const GET_USER_REGISTER = URL_APIUser + "upsertUser";
+//Webs
+export const GET_USER_WEBS = URL_APIUserWebs + "getUserWebs";

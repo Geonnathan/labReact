@@ -39,6 +39,6 @@ export async function getLogin(userLogin : any){
    .request(options).then(function(response){
       return response.data;
    }).catch(function(error){
-      console.log(error);
+      return error;
    });
 }

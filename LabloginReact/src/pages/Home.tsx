@@ -1,16 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import NavBar from "../assets/components/navbar/NavBar";
 import Footer from "../assets/components/footer/Footer";
+import {getUsersWebs} from "../services/WebServices";
+import {WebModel} from "../models/Webs";
 import "./style.css";
 
 function HomeView() {
         const [title, setTitle] = useState("");
+        const [userWebs, setUserWeb] = useState<typeof WebModel[]>([]);
         const [loggedIn, setLoggedIn] = useState(true);
 
         useEffect(() => {
-                setTitle("User Login");
+                let idUser = sessionStorage.getItem('idUser');
+                let userName = sessionStorage.getItem('userName');
+                if(idUser === '' || idUser === null ){
+                        setLoggedIn(false);
+                }
+                else{
+                        setLoggedIn(true);
+                        getUsersWebs(idUser).then((result) =>{
+                                if(result.code < 1){
+                                        setUserWeb(result.value);
+                                }else{
+                                        setUserWeb(result.value);
+                                }
+                        })
+                }
+                setTitle("Popular Webs");
         }, []);
 
 return (
@@ -24,79 +41,43 @@ return (
                                         <div className="col-md-8 col-lg-6">
                                                 <div className="header">
                                                         <h3>Featured Product</h3>
-                                                        <h2>Popular Products</h2>
+                                                        <h2>{title}</h2>
                                                 </div>
                                         </div>
                                 </div>
-                                <div className="row">
-                                        <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div id="product-1" className="single-product">
-                                                        <div className="part-1">
-                                                                <ul>
-                                                                        <li><a href="#"><i className="fas fa-shopping-cart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-heart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-plus"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-expand"></i></a></li>
-                                                                </ul>
-                                                        </div>
-                                                        <div className="part-2">
-                                                                <h3 className="product-title">Here Product Title</h3>
-                                                                <h4 className="product-old-price">$79.99</h4>
-                                                                <h4 className="product-price">$49.99</h4>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div id="product-2" className="single-product">
-                                                        <div className="part-1">
-                                                                <span className="discount">15% off</span>
-                                                                <ul>
-                                                                        <li><a href="#"><i className="fas fa-shopping-cart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-heart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-plus"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-expand"></i></a></li>
-                                                                </ul>
-                                                        </div>
-                                                        <div className="part-2">
-                                                                <h3 className="product-title">Here Product Title</h3>
-                                                                <h4 className="product-price">$49.99</h4>
+                                <div className="container py-5">
+                                        <div className="row">
+                                                <div className="col-lg-7 mx-auto">
+                                                <div className="card rounded-0 border-0 shadow">
+                                                        <div className="card-body p-5">
+                                                                <div className="table-responsive">
+                                                                        <table className="table">
+                                                                        <thead>
+                                                                                <tr>
+                                                                                <th scope="col">id</th>
+                                                                                <th scope="col"></th>
+                                                                                <th scope="col">Web Name</th>
+                                                                                <th scope="col">Url</th>
+                                                                                <th scope="col"></th>
+                                                                                </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                                {userWebs.map((item : any) => (
+                                                                                        <tr key={item.idWeb}>
+                                                                                                <th scope="row">{item.idWeb}</th>
+                                                                                                <td></td>
+                                                                                                <td>{item.webName}</td>
+                                                                                                <td>{item.url}</td>
+                                                                                                <td></td>
+                                                                                        </tr>
+                                                                                ))}
+                                                                        </tbody>
+                                                                        </table>
+                                                                </div>
                                                         </div>
                                                 </div>
                                         </div>
-                                        <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div id="product-3" className="single-product">
-                                                        <div className="part-1">
-                                                                <ul>
-                                                                        <li><a href="#"><i className="fas fa-shopping-cart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-heart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-plus"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-expand"></i></a></li>
-                                                                </ul>
-                                                        </div>
-                                                        <div className="part-2">
-                                                                <h3 className="product-title">Here Product Title</h3>
-                                                                <h4 className="product-old-price">$79.99</h4>
-                                                                <h4 className="product-price">$49.99</h4>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div id="product-4" className="single-product">
-                                                        <div className="part-1">
-                                                                <span className="new">new</span>
-                                                                <ul>
-                                                                        <li><a href="#"><i className="fas fa-shopping-cart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-heart"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-plus"></i></a></li>
-                                                                        <li><a href="#"><i className="fas fa-expand"></i></a></li>
-                                                                </ul>
-                                                        </div>
-                                                        <div className="part-2">
-                                                                <h3 className="product-title">Here Product Title</h3>
-                                                                <h4 className="product-price">$49.99</h4>
-                                                        </div>
-                                                </div>
-                                        </div>
+                                </div>
                                 </div>
                         </div>
                 </section>
