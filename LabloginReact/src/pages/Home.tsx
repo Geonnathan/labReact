@@ -22,8 +22,6 @@ function HomeView() {
                         getUsersWebs(idUser).then((result) =>{
                                 if(result.code < 1){
                                         setUserWeb(result.value);
-                                }else{
-                                        setUserWeb(result.value);
                                 }
                         })
                 }
