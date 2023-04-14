@@ -15,7 +15,7 @@ function NavBar() {
         <div>
             <Navbar className="nav-2" expand = "lg">
                     <Navbar.Brand href="http://localhost:5173">
-                        <p className="mb-1">Page-name</p>
+                        <p className="mb-1">Lab-react</p>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

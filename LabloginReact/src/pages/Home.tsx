@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import NavBar from "../assets/components/navbar/NavBar";
 import Footer from "../assets/components/footer/Footer";
 import {getUsersWebs} from "../services/WebServices";
@@ -13,14 +12,13 @@ function HomeView() {
 
         useEffect(() => {
                 let idUser = sessionStorage.getItem('idUser');
-                let userName = sessionStorage.getItem('userName');
                 if(idUser === '' || idUser === null ){
                         setLoggedIn(false);
                 }
                 else{
                         setLoggedIn(true);
                         getUsersWebs(idUser).then((result) =>{
-                                if(result.code < 1){
+                                if(result.code > 0){
                                         setUserWeb(result.value);
                                 }
                         })
@@ -29,63 +27,95 @@ function HomeView() {
         }, []);
 
 return (
-        <React.Fragment>
-                <NavBar/>
-                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
-                {loggedIn ? (
-                        <section className="section-products">
-                        <div className="container">
-                                <div className="row justify-content-center text-center">
-                                        <div className="col-md-8 col-lg-6">
-                                                <div className="header">
-                                                        <h3>Featured Product</h3>
+    <React.Fragment>
+        <NavBar/>
+        <br />
+        {loggedIn ? (
+            <section className="section-products">
+                <div className="container">
+                    <div className="container py-5">
+                        <div className="row">
+                            <div className="col-lg-7 mx-auto">
+                                <div className="card rounded-0 border-0 shadow">
+                                    <div className="card-body p-5">
+                                        <div className="table-responsive">
+                                            <div className='d-flex justify-content-between'>
+                                                <div className=" text-center">
+                                                    <div className="header">
                                                         <h2>{title}</h2>
+                                                    </div>
                                                 </div>
-                                        </div>
-                                </div>
-                                <div className="container py-5">
-                                        <div className="row">
-                                                <div className="col-lg-7 mx-auto">
-                                                <div className="card rounded-0 border-0 shadow">
-                                                        <div className="card-body p-5">
-                                                                <div className="table-responsive">
-                                                                        <table className="table">
-                                                                        <thead>
-                                                                                <tr>
-                                                                                <th scope="col">id</th>
-                                                                                <th scope="col"></th>
-                                                                                <th scope="col">Web Name</th>
-                                                                                <th scope="col">Url</th>
-                                                                                <th scope="col"></th>
-                                                                                </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                                {userWebs.map((item : any) => (
-                                                                                        <tr key={item.idWeb}>
-                                                                                                <th scope="row">{item.idWeb}</th>
-                                                                                                <td></td>
-                                                                                                <td>{item.webName}</td>
-                                                                                                <td>{item.url}</td>
-                                                                                                <td></td>
-                                                                                        </tr>
-                                                                                ))}
-                                                                        </tbody>
-                                                                        </table>
-                                                                </div>
-                                                        </div>
+                                                <div className="d-flex justify-content-end">
+                                                        <a href="/newProduct"><button type="button" className="btn btn-success mx-5">Add Web</button></a> 
                                                 </div>
+                                            </div>
+                                            <br />
+                                            <br />
+                                            <table className="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">id</th>
+                                                        <th scope="col"></th>
+                                                        <th scope="col">Web Name</th>
+                                                        <th scope="col">Url</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {userWebs.map((item : any) => (
+                                                        <tr key={item.idWeb}>
+                                                            <th scope="row">{item.idWeb}</th>
+                                                            <td></td>
+                                                            <td>{item.webName}</td>
+                                                            <td>{item.url}</td>
+                                                            <td></td>
+                                                        </tr>
+                                                     ))}
+                                                </tbody>
+                                            </table>
                                         </div>
+                                    </div>
                                 </div>
-                                </div>
+                            </div>
                         </div>
-                </section>
-                ) : (
-                <div>
-                        <p>El usuario no está logeado</p> 
+                    </div>
                 </div>
-                )}
-                <Footer/>
-        </React.Fragment>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </section>
+        ) : (
+            <div>
+                <p>El usuario no está logeado</p>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />  
+            </div>
+        )}
+        <Footer/>
+    </React.Fragment>
 );
 }
 

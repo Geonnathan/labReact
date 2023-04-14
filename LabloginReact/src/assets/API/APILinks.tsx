@@ -7,3 +7,4 @@ export const GET_USER_LOGIN = URL_APIUser + "getUser";
 export const GET_USER_REGISTER = URL_APIUser + "upsertUser";
 //Webs
 export const GET_USER_WEBS = URL_APIUserWebs + "getUserWebs";
+export const POST_USER_WEBS = URL_APIUserWebs + "upsertUserWeb";
